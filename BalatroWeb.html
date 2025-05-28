@@ -195,6 +195,21 @@
         .card[data-value="13"] {
             margin-left: 15px;
         }
+        #score-display {
+            font-size: 24px;
+            margin: 15px 0;
+            color: #f1c40f;
+            font-weight: bold;
+        }
+
+        .hand-type {
+            color: #2ecc71;
+            text-transform: uppercase;
+        }
+
+        .score-value {
+            color: #e74c3c;
+        }
     </style>
 </head>
 <body>
@@ -207,6 +222,11 @@
     </div>
 
     <div id="message"></div>
+
+    <div id="score-display">
+        Last Play: <span class="hand-type">-</span>
+        Score: <span class="score-value">0</span>
+    </div>
 
     <div id="hand"></div>
 
