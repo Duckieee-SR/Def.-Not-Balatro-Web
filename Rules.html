@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Balatro Bugle - Rules Edition</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@400;700&display=swap');
+
+        :root {
+            --newsprint: #f8f5f0;
+            --ink: #222;
+            --headline: #8b0000;
+            --accent: #555;
+            --column-rule: #ccc;
+            --joker-purple: #6a0dad;
+        }
+
+        body {
+            font-family: 'Libre Baskerville', serif;
+            background-color: var(--newsprint);
+            color: var(--ink);
+            margin: 0;
+            padding: 0;
+            background-image: url('https://www.transparenttextures.com/patterns/paper.png');
+            line-height: 1.5;
+        }
+
+        .newspaper {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            border: 1px solid #ddd;
+            column-count: 2;
+            column-gap: 3rem;
+            column-rule: 1px solid var(--column-rule);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .newspaper:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 10%, rgba(255,255,255,0) 90%, rgba(255,255,255,1) 100%);
+            pointer-events: none;
+        }
+
+        .masthead {
+            font-family: 'IM Fell English', serif;
+            text-align: center;
+            column-span: all;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px double var(--joker-purple);
+            position: relative;
+        }
+
+        .masthead h1 {
+            font-size: 3rem;
+            margin: 0;
+            color: var(--joker-purple);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .masthead .subhead {
+            font-style: italic;
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+            color: var(--accent);
+        }
+
+        .masthead:after {
+            content: "♠️♣️♥️♦️";
+            display: block;
+            letter-spacing: 1rem;
+            margin-top: 0.5rem;
+            color: var(--joker-purple);
+        }
+
+        .dateline {
+            font-family: 'Playfair Display', serif;
+            text-align: right;
+            column-span: all;
+            font-size: 0.9rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            font-family: 'IM Fell English', serif;
+            color: var(--joker-purple);
+            font-size: 1.8rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            break-after: avoid;
+            border-bottom: 1px solid var(--joker-purple);
+            padding-bottom: 0.3rem;
+        }
+
+        h3 {
+            font-family: 'IM Fell English', serif;
+            font-size: 1.4rem;
+            margin-top: 1.5rem;
+            color: var(--ink);
+            break-after: avoid;
+        }
+
+        h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            margin: 1rem 0 0.3rem 0;
+            color: var(--ink);
+            break-after: avoid;
+        }
+
+        p {
+            margin: 0 0 1rem 0;
+            text-align: justify;
+            hyphens: auto;
+        }
+
+        ul {
+            margin: 0 0 1rem 0;
+            padding-left: 1.5rem;
+            break-inside: avoid;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+            break-inside: avoid;
+        }
+
+        .hand-item {
+            break-inside: avoid;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px dotted var(--column-rule);
+            position: relative;
+        }
+
+        .hand-item:before {
+            content: "•";
+            color: var(--joker-purple);
+            position: absolute;
+            left: -1rem;
+        }
+
+        .payout {
+            float: right;
+            font-weight: bold;
+            font-family: 'Playfair Display', serif;
+            color: var(--joker-purple);
+            background-color: rgba(106, 13, 173, 0.1);
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+        }
+
+        .deck {
+            font-style: italic;
+            color: var(--accent);
+            font-size: 0.9rem;
+            display: block;
+            margin-top: 0.2rem;
+        }
+
+        .ad {
+            font-family: 'Playfair Display', serif;
+            background-color: rgba(106, 13, 173, 0.05);
+            padding: 1rem;
+            margin: 1rem 0;
+            border: 1px dashed var(--joker-purple);
+            text-align: center;
+            break-inside: avoid;
+            font-size: 1rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .ad-title {
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--joker-purple);
+            margin-bottom: 0.5rem;
+        }
+
+        .ad:before {
+            content: "ADVERTISEMENT";
+            display: block;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .joker-icon {
+            color: var(--joker-purple);
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .newspaper {
+                column-count: 1;
+                padding: 1rem;
+            }
+        }
+
+        @media print {
+            body {
+                background: none;
+            }
+            .newspaper {
+                box-shadow: none;
+                border: none;
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="newspaper">
+    <div class="masthead">
+        <h1>The Balatro Bugle</h1>
+        <div class="subhead">Teaching you to quit while you're behind since • Est. 1999</div>
+    </div>
+
+    <div class="dateline">
+        Saturday, June 5, 2025 • Vol. I, No. 42
+    </div>
+
+    <h2>How to Play Balatro</h2>
+    <p>In this special edition, we document the rules of the sensational new card game <span class="joker-icon">Balatro</span> that's taking parlors and saloons by storm.</p>
+
+    <p><strong>Gameplay:</strong> The player receives a previously approved set amount of cards. Choose which cards to play or discard by selecting them, then either play or discard the selected cards. New cards will be dealt to replace any discards or plays.</p>
+
+    <div class="ad">
+        <div class="ad-title">Pro Tip from a Degenerate</div>
+        <div>"It's only a gambling problem if I'm losing" <br>- Someone's uncle in the slot machine next to mine</div>
+    </div>
+
+    <h3>Official Hand Rankings</h3>
+    <p>Below are the authorized poker hands as recognized by the <em>Council of Hopelessly Invested Poker Schmucks (CHIPS)</em>, with standard payout multipliers.</p>
+
+    <div class="hand-item">
+        <h4>Royal Flush <span class="payout">200 × 8</span></h4>
+        <div class="deck">Ace, King, Queen, Jack, Ten of the same suit</div>
+    </div>
+
+    <div class="hand-item">
+        <h4>Straight Flush <span class="payout">100 × 8</span></h4>
+        <div class="deck">Five consecutive cards of the same suit</div>
+    </div>
+
+    <div class="hand-item">
+        <h4>Four of a Kind <span class="payout">60 × 7</span></h4>
+        <div class="deck">All four cards of one rank</div>
+    </div>
+
+    <div class="hand-item">
+        <h4>Full House <span class="payout">40 × 4</span></h4>
+        <div class="deck">Three of one rank and two of another</div>
+    </div>
+
+    <div class="hand-item">
+        <h4>Flush <span class="payout">35 × 4</span></h4>
+        <div class="deck">Any five cards of the same suit</div>
+    </div>
+
+    <div class="hand-item">
+        <h4>Straight <span class="payout">30 × 4</span></h4>
+        <div class="deck">Five consecutive cards of mixed suits</div>
+    </div>
+
+    <div class="hand-item">
+        <h4>Three of a Kind <span class="payout">30 × 3</span></h4>
+        <div class="deck">Three cards of the same rank</div>
+    </div>
+
+    <div class="hand-item">
+        <h4>Two Pair <span class="payout">20 × 2</span></h4>
+        <div class="deck">Two different pairs</div>
+    </div>
+
+    <div class="hand-item">
+        <h4>Pair <span class="payout">10 × 2</span></h4>
+        <div class="deck">Two cards of the same rank</div>
+    </div>
+
+    <div class="hand-item">
+        <h4>High Card <span class="payout">5 × 1</span></h4>
+        <div class="deck">No matching cards - highest card plays</div>
+    </div>
+
+    <div class="ad">
+        <div class="ad-title">Words of Wisdom</div>
+        <div>"99.9% of gamblers give up right before they WIN BIG" <br>- <em>Albert Einstein (probably)</em></div>
+    </div>
+
+    <h3>Special Balatro Rules (WIP)</h3>
+    <p>The <span class="joker-icon">Balatro</span> variant introduces these unique twists:</p>
+    <ul>
+        <li>Jokers are wild (naturally)</li>
+        <li>Ante increases after each successful round</li>
+        <li>Special tarot cards can modify gameplay</li>
+        <li>Planet cards can level up your hand value and modifiers</li>
+    </ul>
+</div>
+</body>
+</html>

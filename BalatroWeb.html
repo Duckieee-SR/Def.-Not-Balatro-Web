@@ -207,11 +207,7 @@
             padding: 10px 20px;
             border-radius: 10px;
             border: 2px solid #3498db;
-        }
 
-        #Score {
-            color: #f1c40f;
-            font-size: 28px;
         }
 
         #action-counters {
@@ -235,12 +231,19 @@
             background-color: #555;
         }
 
+        .name {
+            font-family: 'IM Fell English', serif;
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+        }
+
     </style>
 </head>
 <body>
 <div class="background">
     <section id="game-container">
-        <h1>Balatro Web</h1>
+        <h1 class="name">Balatro Web</h1>
         <div id="score-display">Score: <span id="Score">0</span></div>
         <div id="deck">
             <img id="deck-image" src="./Cards/back.png" alt="Deck">

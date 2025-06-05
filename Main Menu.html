@@ -2,27 +2,98 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Main Menu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Menu - Balatro Web</title>
     <style>
-      body{
-        background-color: lightpink;
-      }
-      button {
-        background-color: #a4ffff;
-        color: black;
-        position: relative;
-        margin: auto;
-        display: block;
-        transform: translate(0, 50%);
-        width: 150px;
-        height: 50px;
-        border-radius: 10px;
-      }
+        @import url('https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@400;700&display=swap');
 
+        :root {
+            --newsprint: #f8f5f0;
+            --ink: #222;
+            --joker-purple: #6a0dad;
+        }
+
+        body {
+            font-family: 'Libre Baskerville', serif;
+            background-color: var(--newsprint);
+            color: var(--ink);
+            margin: 0;
+            padding: 0;
+            background-image: url('https://www.transparenttextures.com/patterns/paper.png');
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .menu-container {
+            background-color: white;
+            padding: 3rem;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            border: 1px solid #ddd;
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+        }
+
+        .menu-container:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 10%, rgba(255,255,255,0) 90%, rgba(255,255,255,1) 100%);
+            pointer-events: none;
+        }
+
+        .menu-header {
+            font-family: 'IM Fell English', serif;
+            color: var(--joker-purple);
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            border-bottom: 3px double var(--joker-purple);
+            padding-bottom: 1rem;
+        }
+
+        .menu-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .menu-button {
+            font-family: 'Playfair Display', serif;
+            background-color: rgba(106, 13, 173, 0.1);
+            color: var(--ink);
+            border: 2px solid var(--joker-purple);
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .menu-button:hover {
+            background-color: var(--joker-purple);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
     </style>
 </head>
 <body>
-    <a href="BalatroWeb.html"><button >Start Game</button></a>
-    <a href="Credits.html"><button>Credits</button></a>
+<div class="menu-container">
+    <h1 class="menu-header">Balatro Web</h1>
+
+    <section class="menu-buttons">
+        <a href="BalatroWeb.html" class="menu-button">Start Game</a>
+        <a href="Rules.html" class="menu-button">Rules</a>
+    </section>
+</div>
 </body>
 </html>

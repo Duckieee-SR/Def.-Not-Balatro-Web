@@ -345,7 +345,7 @@ document.addEventListener('DOMContentLoaded', function() {
         playsRemaining = 5;  // Reset plays
         discardsRemaining = 3;  // Reset discards
         score = 0; //Resets Score
-        updateUI();
+        startGame();
     }
 
     function  updateUI(){
